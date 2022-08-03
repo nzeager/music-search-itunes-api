@@ -11,7 +11,7 @@ searchForm.addEventListener('submit', (event) => {
     let searchBox = document.querySelector('#search-box');
     let urlEnd = searchBox.value.replaceAll(' ', '+');
     console.log(urlEnd);
-    searchUrl = `${searchUrl}${urlEnd}`;
+    searchUrl = `${searchUrl}${urlEnd}&limit=50`;
     getSearchResults(searchUrl);
 })
 
@@ -54,6 +54,13 @@ function showTracks (trackArray) {
         artistDiv.classList.add("artist");
         artistDiv.innerText = track.artistName;
         songDiv.appendChild(artistDiv);
+
+        //audio
+        let audioTag = document.createElement("audio");
+        audioTag.classList.add("audio");
+        audioTag.src = track.previewUrl;
+        audioTag.controls = true;
+        songDiv.appendChild(audioTag);
 
         // append songDiv to results
         resultsDiv.appendChild(songDiv);
