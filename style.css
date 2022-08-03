@@ -21,8 +21,12 @@ body {
     background-color: rgb(200, 218, 234);
     border: solid;
     border-width: 0.1rem;
-    border-color: black;
+    border-color: rgb(66, 135, 184);
     border-radius: 3rem;
+}
+
+.song:hover {
+    box-shadow: 0.25rem 0.25rem 0.25rem rgb(19, 90, 141);
 }
 
 .trackName {
@@ -32,4 +36,10 @@ body {
 
 .artist {
     font-size: 0.9rem;
+}
+
+.audio {
+    transform: scale(.65, .65);
+    transform-origin: left;
+    padding-left: 0.5rem;
 }

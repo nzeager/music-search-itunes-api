@@ -36,12 +36,10 @@ function showTracks (trackArray) {
         songDiv.classList.add("song");
         
         //image
-        let imageDiv = document.createElement("div");
-        imageDiv.classList.add("songImg");
-        let picture = document.createElement("img");
-        picture.src = track.artworkUrl100;
-        imageDiv.appendChild(picture);
-        songDiv.appendChild(imageDiv);
+        let imageTag = document.createElement("img");
+        imageTag.classList.add("songImg");
+        imageTag.src = track.artworkUrl100;
+        songDiv.appendChild(imageTag);
 
         //track
         let trackDiv = document.createElement("div");
