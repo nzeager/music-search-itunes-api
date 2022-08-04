@@ -14,6 +14,7 @@ searchForm.addEventListener('submit', (event) => {
     searchUrl = `${searchUrl}${urlEnd}&limit=50`;
     clearTracks();
     getSearchResults(searchUrl);
+
 })
 
 function getSearchResults(url) {
@@ -22,11 +23,22 @@ function getSearchResults(url) {
         headers: { 'Content-Type': 'text/javascript; charset=utf-8'}
         })
         // response is whatever the function returns
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw Error(response);
+            } else {
+                console.log(response);
+                return response.json();
+            }
+        })
         // data is whatever the above code returns, in this case response.json()
         .then(data => {
             let songs = data.results;
             showTracks(songs);
+            isEmpty();
+        }).catch(error => {
+            console.log(error);
+            alert(`Your request failed, for the reason: ${error}`);
         })
 }
 
@@ -69,5 +81,14 @@ function clearTracks(){
     // looping through each child of the search results list and remove each child
     while (resultsDiv.firstChild){
         resultsDiv.removeChild(resultsDiv.firstChild)
+    }
+}
+
+function isEmpty() {
+    if (results.firstChild === null){
+        let errorMessage = document.createElement("p");
+        errorMessage.classList.add("err");
+        errorMessage.innerText = "This did not return any results. Please try another search.";
+        resultsDiv.appendChild(errorMessage);
     }
 }
