@@ -10,7 +10,8 @@ searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
     let searchBox = document.querySelector('#search-box');
     let urlEnd = searchBox.value.replaceAll(' ', '+');
-    searchUrl = 'https://proxy-itunes-api.glitch.me/search?term=';
+    searchUrl = 'http://httpstat.us/404';
+    // 'https://proxy-itunes-api.glitch.me/search?term=';
     searchUrl = `${searchUrl}${urlEnd}&limit=50`;
     clearTracks();
     getSearchResults(searchUrl);
@@ -25,7 +26,7 @@ function getSearchResults(url) {
         // response is whatever the function returns
         .then(response => {
             if (!response.ok) {
-                throw Error(response);
+                throw Error(response.status);
             } else {
                 console.log(response);
                 return response.json();
