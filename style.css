@@ -4,6 +4,10 @@ body {
     background-color: #7e8ab8;
 }
 
+.content {
+    padding-left: 1rem;
+}
+
 #search {
     padding-bottom: 1rem;
 }

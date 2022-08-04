@@ -3,15 +3,16 @@
 const resultsDiv = document.querySelector('#results');
 // console.log(resultsDiv);
 
-let searchUrl = 'https://proxy-itunes-api.glitch.me/search?term=';
+let searchUrl = '';
 
 let searchForm = document.querySelector('#search-form');
 searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
     let searchBox = document.querySelector('#search-box');
     let urlEnd = searchBox.value.replaceAll(' ', '+');
-    console.log(urlEnd);
+    searchUrl = 'https://proxy-itunes-api.glitch.me/search?term=';
     searchUrl = `${searchUrl}${urlEnd}&limit=50`;
+    clearTracks();
     getSearchResults(searchUrl);
 })
 
@@ -25,7 +26,6 @@ function getSearchResults(url) {
         // data is whatever the above code returns, in this case response.json()
         .then(data => {
             let songs = data.results;
-            console.log(songs);
             showTracks(songs);
         })
 }
@@ -62,5 +62,12 @@ function showTracks (trackArray) {
 
         // append songDiv to results
         resultsDiv.appendChild(songDiv);
+    }
+}
+
+function clearTracks(){
+    // looping through each child of the search results list and remove each child
+    while (resultsDiv.firstChild){
+        resultsDiv.removeChild(resultsDiv.firstChild)
     }
 }
