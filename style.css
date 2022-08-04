@@ -12,6 +12,10 @@ body {
     padding-bottom: 1rem;
 }
 
+#search-box {
+    width: 20rem;
+}
+
 #results {
     display: flex;
     flex-wrap: wrap;
