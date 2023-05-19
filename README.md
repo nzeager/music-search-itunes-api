@@ -1,6 +1,17 @@
 # iTunes Search
 
-## Directions
+## Momentum Boot Camp Project 6
+
+Skills:
+
+- using data from an API
+- implementing search bar
+- navigation to different pages
+- displaying audio preview
+- clearing search results
+- displaying message when search doesn't return results
+
+## Below are Project Directions
 
 For this app, we will request data from the iTunes API.
 
